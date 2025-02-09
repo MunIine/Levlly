@@ -19,7 +19,9 @@ class _CalculatorState extends State<Calculator> {
         child: Column(
           children: [
             SizedBox(height: 50),
-            MarksAppbar()
+            MarksAppbar(),
+            SizedBox(height: 30),
+            MarksPlaceholder()
           ],
         ),
       ),

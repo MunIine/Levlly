@@ -19,6 +19,7 @@ class ItemBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       shadowColor: shadowColor,
+      color: AppColors.blockBackgroundColor,
       elevation: elevation,
       borderRadius: BorderRadius.circular(borderRadius),
       child: child,

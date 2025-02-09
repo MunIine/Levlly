@@ -10,41 +10,35 @@ class BottomMarksBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: ItemBlock(
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.blockBackgroundColor,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(5, (int index){
-                final String value = (5-index).toString();
-                return Draggable(
-                  data: value,
-                  feedback: Opacity(
-                    opacity: 0.75,
-                    child: BlockTextButton(
-                      value: value, 
-                      onPressed: (){}, 
-                      useBackgroundColorScheme: true, 
-                      color: AppColors.textColor,
-                      elevation: 0,
-                    ),
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: List.generate(5, (int index){
+              final String value = (5-index).toString();
+              return Draggable(
+                data: value,
+                feedback: Opacity(
+                  opacity: 0.75,
                   child: BlockTextButton(
                     value: value, 
                     onPressed: (){}, 
                     useBackgroundColorScheme: true, 
                     color: AppColors.textColor,
                     elevation: 0,
-                    width: 60,
-                    height: 60,
                   ),
-                );
-              }) 
-            ),
+                ),
+                child: BlockTextButton(
+                  value: value, 
+                  onPressed: (){}, 
+                  useBackgroundColorScheme: true, 
+                  color: AppColors.textColor,
+                  elevation: 0,
+                  width: 60,
+                  height: 60,
+                ),
+              );
+            }) 
           ),
         ),
       ),
