@@ -7,7 +7,7 @@ import 'package:levlly/widgets/block_text_button.dart';
 class DoubleGridView extends StatefulWidget {
   const DoubleGridView({super.key, required this.marks});
 
-  final List<int> marks;
+  final List<String> marks;
 
   @override
   State<DoubleGridView> createState() => _DoubleGridViewState();
@@ -47,7 +47,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
                     return DottedPlaceholder(size: itemsSize);
                   }
                   return BlockTextButton(
-                    value: widget.marks[index].toString(), 
+                    value: widget.marks[index], 
                     onPressed: (){},
                     useBackgroundColorScheme: true, 
                     color: AppColors.textColor,
@@ -85,7 +85,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
         itemBuilder: (context, index) {
           if (index < itemsCount){
             return BlockTextButton(
-              value: widget.marks[index].toString(), 
+              value: widget.marks[index], 
               onPressed: (){},
               useBackgroundColorScheme: true, 
               color: AppColors.textColor,

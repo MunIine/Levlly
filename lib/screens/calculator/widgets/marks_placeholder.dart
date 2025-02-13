@@ -3,21 +3,27 @@ import 'package:levlly/screens/calculator/widgets/double_grid_view.dart';
 import 'package:levlly/widgets/export.dart';
 
 class MarksPlaceholder extends StatefulWidget {
-  const MarksPlaceholder({super.key});
+  const MarksPlaceholder({super.key, required this.marks, required this.markAdd});
+
+  final List<String> marks;
+  final ValueChanged<String> markAdd;
 
   @override
   State<MarksPlaceholder> createState() => _MarksPlaceholderState();
 }
 
 class _MarksPlaceholderState extends State<MarksPlaceholder> {
-  List<int> marks = List.generate(0, (index) => 5);
-
   @override
   Widget build(BuildContext context) {
     return ItemBlock(
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: DoubleGridView(marks: marks)
+        child: DragTarget<String>(
+          builder: (context, candidateData, rejectedData) {
+            return DoubleGridView(marks: widget.marks);
+          },
+          onAcceptWithDetails:(details) => widget.markAdd(details.data),
+        )
       )
     );
   }

@@ -3,7 +3,9 @@ import 'package:levlly/theme/app_colors.dart';
 import 'package:levlly/widgets/export.dart';
 
 class BottomMarksBar extends StatelessWidget {
-  const BottomMarksBar({super.key});
+  const BottomMarksBar({super.key, required this.markAdd});
+
+  final ValueChanged<String> markAdd;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class BottomMarksBar extends StatelessWidget {
                 ),
                 child: BlockTextButton(
                   value: value, 
-                  onPressed: (){}, 
+                  onPressed: () => markAdd(value), 
                   useBackgroundColorScheme: true, 
                   color: AppColors.textColor,
                   elevation: 0,

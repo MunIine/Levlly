@@ -9,25 +9,32 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+  final double contentPadding = 12;
+  final List<String> marks = [];
+
+  void markAdd(String value){
+    setState(() {
+      marks.add(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    const double contentPadding = 12;
-
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: contentPadding),
         child: Column(
           children: [
-            SizedBox(height: 50),
-            MarksAppbar(),
-            SizedBox(height: 30),
-            MarksPlaceholder()
+            const SizedBox(height: 50),
+            const MarksAppbar(),
+            const SizedBox(height: 30),
+            MarksPlaceholder(marks: marks, markAdd: markAdd)
           ],
         ),
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: contentPadding),
-        child: BottomMarksBar(),
+        child: BottomMarksBar(markAdd: markAdd),
       )
     );
   }
