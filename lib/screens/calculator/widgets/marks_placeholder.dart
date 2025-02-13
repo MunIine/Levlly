@@ -10,7 +10,7 @@ class MarksPlaceholder extends StatefulWidget {
 }
 
 class _MarksPlaceholderState extends State<MarksPlaceholder> {
-  List<int> marks = List.generate(10, (index) => 5);
+  List<int> marks = List.generate(0, (index) => 5);
 
   @override
   Widget build(BuildContext context) {

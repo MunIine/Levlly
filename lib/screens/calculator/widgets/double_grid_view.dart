@@ -21,6 +21,9 @@ class _DoubleGridViewState extends State<DoubleGridView> {
 
   @override
   Widget build(BuildContext context) {
+    final int itemsCount = widget.marks.length;
+    final freePlaces = getFreePlaces(itemsCount, expandMode);
+
     // Один ряд
     if(!expandMode){
       return SizedBox(
@@ -29,15 +32,19 @@ class _DoubleGridViewState extends State<DoubleGridView> {
           children: [
             Expanded(
               child: ListView.separated(
-                itemCount: widget.marks.length+1,
+                itemCount: itemsCount+freePlaces+1,
                 padding: const EdgeInsets.symmetric(horizontal: 2),
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) {
-                  return SizedBox(width: horizontalItemsPadding);
+                  // Костыль для добавления separator к последнему элементу
+                  return SizedBox(width: index != itemsCount+freePlaces-1 ? horizontalItemsPadding : horizontalItemsPadding - 2);
                 },
                 itemBuilder: (context, index){
-                  if (index == widget.marks.length){ // Отступ для последнего элемента
+                  if (index == itemsCount+freePlaces){ // Отступ для последнего элемента
                     return Container();
+                  }
+                  if (index >= itemsCount){
+                    return DottedPlaceholder(size: itemsSize);
                   }
                   return BlockTextButton(
                     value: widget.marks[index].toString(), 
@@ -65,11 +72,10 @@ class _DoubleGridViewState extends State<DoubleGridView> {
     }
 
     // Случай для двух рядов
-    final freePlaces = getFreePlaces(widget.marks.length); // Кол-во placeholder
     return SizedBox(
       height: itemsSize * 2 + verticalItemsPadding,
       child: GridView.builder(
-        itemCount: widget.marks.length+freePlaces+1,
+        itemCount: itemsCount+freePlaces+1,
         padding: const EdgeInsets.symmetric(horizontal: 2),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 5,
@@ -77,7 +83,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
           mainAxisSpacing: verticalItemsPadding,
         ),
         itemBuilder: (context, index) {
-          if (index < widget.marks.length){
+          if (index < itemsCount){
             return BlockTextButton(
               value: widget.marks[index].toString(), 
               onPressed: (){},
@@ -88,7 +94,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
               height: itemsSize,
             );
           }
-          if (index == widget.marks.length+freePlaces){
+          if (index == itemsCount+freePlaces){
             return ViewMoreButton(
               size: itemsSize,
               down: false,
@@ -104,7 +110,14 @@ class _DoubleGridViewState extends State<DoubleGridView> {
     );
   }
 
-  int getFreePlaces(int length) {
+  int getFreePlaces(int length, bool expandMode) {
+    if (!expandMode){
+      if (length < 4){
+        return 4 - length;
+      }
+      return 0;
+    }
+
     final freePlaces = (length+1)%5;
     if (length < 10) {
       return 10-length-1;
