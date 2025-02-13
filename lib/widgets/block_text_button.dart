@@ -31,7 +31,7 @@ class BlockTextButton extends StatelessWidget {
       width: width,
       height: height,
       child: TextButton(
-        onPressed: (){},
+        onPressed: onPressed,
         style: ButtonStyle(
           backgroundColor: !useBackgroundColorScheme ?
           WidgetStatePropertyAll(backgroundColor) :
