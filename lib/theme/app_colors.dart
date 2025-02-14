@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors{
   static const List<Color> marks = [
+    Color(0xFFA1A1A1),
     Color(0xFF536456),
     Color(0xFFDA5E4E),
     Color(0xFFEC9549), 
@@ -17,5 +18,5 @@ class AppColors{
   static const Color textColor = Colors.white;
   static const Color shadowColor = Color(0xCC000000);
 
-  static Color getColor(value) => marks[value.round()-1];
+  static Color getColor(num value) => marks[value.round()];
 }
