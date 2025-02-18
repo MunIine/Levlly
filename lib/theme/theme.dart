@@ -12,7 +12,7 @@ final theme = ThemeData(
       shadowColor: const WidgetStatePropertyAll(AppColors.shadowColor)
     )
   ),
-  textSelectionTheme: TextSelectionThemeData(
+  textSelectionTheme: const TextSelectionThemeData(
     selectionHandleColor: Colors.transparent
   )
 );

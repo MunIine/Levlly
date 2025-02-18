@@ -15,6 +15,7 @@ class _CalculatorState extends State<Calculator> {
   String goalScore = "3.5"; // Стандартный желаемый балл
 
   void markAdd(String value){
+    if(marks.length == 999) return; // Может быть какой-то алерт о превышении
     setState(() {
       marks.add(value);
     });
