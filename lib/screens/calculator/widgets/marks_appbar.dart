@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/extensions/num_extensions.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/screens/calculator/widgets/appbar/export.dart';
 import 'package:levlly/widgets/export.dart';
 
 class MarksAppbar extends StatefulWidget {
-  const MarksAppbar({super.key, required this.marks});
+  const MarksAppbar({super.key, required this.marks, required this.changeGoalScore, required this.goalScore});
 
   final List<String> marks;
+  final ValueChanged<String> changeGoalScore;
+  final String goalScore;
 
   @override
   State<MarksAppbar> createState() => _MarksAppbarState();
@@ -31,12 +34,11 @@ class _MarksAppbarState extends State<MarksAppbar> {
           color: AppColors.alternativeTextColor,
         ),
         CircularProgressWithText(value: grade, size: 80),
-        BlockTextButton(
-          value: "3.6", 
-          onPressed: (){},
-          width: 90,
-          height: 65,
-          useTextColorScheme: true,
+        MarkInputBlock(
+          defaultGoalScore: widget.goalScore, 
+          changeGoalScore: widget.changeGoalScore, 
+          height: 65, 
+          width: 90
         )
       ]
     );

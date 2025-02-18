@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:levlly/screens/calculator/widgets/double_grid_view.dart';
+import 'package:levlly/screens/calculator/widgets/marks_grid/export.dart';
 import 'package:levlly/widgets/export.dart';
 
 class MarksPlaceholder extends StatefulWidget {

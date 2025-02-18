@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:levlly/screens/calculator/widgets/dotted_placeholder.dart';
-import 'package:levlly/screens/calculator/widgets/view_more_button.dart';
+import 'package:levlly/screens/calculator/widgets/marks_grid/dotted_placeholder.dart';
+import 'package:levlly/screens/calculator/widgets/marks_grid/view_more_button.dart';
 import 'package:levlly/theme/app_colors.dart';
 import 'package:levlly/widgets/block_text_button.dart';
 

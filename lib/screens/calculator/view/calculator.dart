@@ -10,11 +10,19 @@ class Calculator extends StatefulWidget {
 
 class _CalculatorState extends State<Calculator> {
   final double contentPadding = 12;
+  
   final List<String> marks = [];
+  String goalScore = "3.5"; // Стандартный желаемый балл
 
   void markAdd(String value){
     setState(() {
       marks.add(value);
+    });
+  }
+
+  void changeGoalScore(String value){
+    setState(() {
+      goalScore = value;
     });
   }
 
@@ -26,9 +34,9 @@ class _CalculatorState extends State<Calculator> {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            MarksAppbar(marks: marks),
+            MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore,),
             const SizedBox(height: 30),
-            MarksPlaceholder(marks: marks, markAdd: markAdd)
+            MarksPlaceholder(marks: marks, markAdd: markAdd),
           ],
         ),
       ),
