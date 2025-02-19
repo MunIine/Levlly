@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/item_block.dart';
 
 class MarkInputBlock extends StatefulWidget {
@@ -65,11 +66,11 @@ class _MarkInputBlockState extends State<MarkInputBlock> {
                 textAlign: TextAlign.center,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: null,
-                maxLength: 4,
+                maxLength: AppDimensions.markInputMaxLenght,
                 cursorColor: color,
                 style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
+                  fontSize: AppDimensions.markInputFontSize,
+                  fontWeight: AppDimensions.markInputFontWeight,
                   color: color
                 ),
                 inputFormatters: [

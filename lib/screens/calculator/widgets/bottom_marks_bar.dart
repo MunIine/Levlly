@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/export.dart';
 
 class BottomMarksBar extends StatelessWidget {
@@ -9,11 +10,14 @@ class BottomMarksBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Динамический расчёт вертикального паддинг ряда от горизонтального
+    final double verticalRowPadding = ((MediaQuery.of(context).size.width - AppDimensions.bodyPadding * 2)-5*AppDimensions.bottomMarksBarSize)/6;
+    
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: AppDimensions.bottomMarksBarPadding),
       child: ItemBlock(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: verticalRowPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(5, (int index){
@@ -36,8 +40,8 @@ class BottomMarksBar extends StatelessWidget {
                   useBackgroundColorScheme: true, 
                   color: AppColors.textColor,
                   elevation: 0,
-                  width: 60,
-                  height: 60,
+                  width: AppDimensions.bottomMarksBarSize,
+                  height: AppDimensions.bottomMarksBarSize,
                 ),
               );
             }) 

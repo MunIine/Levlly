@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 
 class ItemBlock extends StatelessWidget {
   const ItemBlock({
     super.key, 
     required this.child, 
-    this.elevation = 6, 
-    this.borderRadius = 12, 
+    this.elevation = AppDimensions.elevation, 
+    this.borderRadius = AppDimensions.itemBlockBorderRadius, 
     this.shadowColor = AppColors.shadowColor
   });
 

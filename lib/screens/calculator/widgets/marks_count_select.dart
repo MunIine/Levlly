@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/export.dart';
 
 class MarksCountSelect extends StatefulWidget {
@@ -12,23 +13,24 @@ class MarksCountSelect extends StatefulWidget {
 }
 
 class _MarksCountSelectState extends State<MarksCountSelect> {
-  final double size = 53;
   int selected = 0;
 
   @override
   Widget build(BuildContext context) {
     return ItemBlock(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12).copyWith(left: 15).copyWith(right: 15),
+        padding: const EdgeInsets.symmetric(vertical: AppDimensions.selectVerticalPadding)
+        .copyWith(left: AppDimensions.selectHorizontalPadding)
+        .copyWith(right: AppDimensions.selectHorizontalPadding),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(5, (int index) {
             return BlockTextButton(
               value: index != 4 ? (index+1).toString() : null,
               backgroundColor: selected == index ? AppColors.selected : AppColors.blockItemsBackgroundColor,
-              height: size,
-              width: size,
-              elevation: 3,
+              height: AppDimensions.selectItemSize,
+              width: AppDimensions.selectItemSize,
+              elevation: AppDimensions.selectItemElevation,
               onPressed: (){
                 selected = index;
                 widget.updateNumberOfRequiredMarks(selected);
@@ -36,7 +38,7 @@ class _MarksCountSelectState extends State<MarksCountSelect> {
               child: index == 4 ? const Icon(
                 Icons.edit_rounded,
                 color: AppColors.alternativeTextColor,
-                size: 30,
+                size: AppDimensions.selectIconSize,
               ) : null
             );
           }),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/screens/calculator/widgets/export.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -9,8 +10,6 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  final double contentPadding = 12;
-  
   final List<String> marks = [];
   String goalScore = "3.5"; // Стандартный желаемый балл
   int numberOfRequiredMarks = 0;
@@ -38,7 +37,7 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: contentPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.bodyPadding),
         child: Column(
           children: [
             const SizedBox(height: 50),
@@ -51,7 +50,7 @@ class _CalculatorState extends State<Calculator> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: contentPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.bodyPadding),
         child: BottomMarksBar(markAdd: markAdd),
       )
     );

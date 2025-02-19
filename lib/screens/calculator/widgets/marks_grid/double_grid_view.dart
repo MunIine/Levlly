@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:levlly/screens/calculator/widgets/marks_grid/dotted_placeholder.dart';
 import 'package:levlly/screens/calculator/widgets/marks_grid/view_more_button.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/block_text_button.dart';
 
 class DoubleGridView extends StatefulWidget {
@@ -14,9 +15,9 @@ class DoubleGridView extends StatefulWidget {
 }
 
 class _DoubleGridViewState extends State<DoubleGridView> {
-  final double itemsSize = 53;
-  final double horizontalItemsPadding = 19;
-  final double verticalItemsPadding = 15; // Только для dual mode
+  final double itemsSize = AppDimensions.gridItemSize;
+  final double horizontalItemsPadding = AppDimensions.gridHorizontalItemPadding;
+  final double verticalItemsPadding = AppDimensions.gridVerticalItemPadding; // Только для dual mode
   bool expandMode = false;
 
   @override
@@ -33,11 +34,11 @@ class _DoubleGridViewState extends State<DoubleGridView> {
             Expanded(
               child: ListView.separated(
                 itemCount: itemsCount+freePlaces+1,
-                padding: const EdgeInsets.symmetric(horizontal: 2),
+                padding: const EdgeInsets.symmetric(horizontal: AppDimensions.gridItemPadding),
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) {
                   // Костыль для добавления separator к последнему элементу
-                  return SizedBox(width: index != itemsCount+freePlaces-1 ? horizontalItemsPadding : horizontalItemsPadding - 2);
+                  return SizedBox(width: index != itemsCount+freePlaces-1 ? horizontalItemsPadding : horizontalItemsPadding - AppDimensions.gridItemPadding);
                 },
                 itemBuilder: (context, index){
                   if (index == itemsCount+freePlaces){ // Отступ для последнего элемента
@@ -65,7 +66,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
                 expandMode = !expandMode;
               });
             }),
-            const SizedBox(width: 2)
+            const SizedBox(width: AppDimensions.gridItemPadding)
           ]
         ),
       );
@@ -76,7 +77,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
       height: itemsSize * 2 + verticalItemsPadding,
       child: GridView.builder(
         itemCount: itemsCount+freePlaces+1,
-        padding: const EdgeInsets.symmetric(horizontal: 2),
+        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.gridItemPadding),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 5,
           crossAxisSpacing: horizontalItemsPadding,

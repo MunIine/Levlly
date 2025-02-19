@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 
 class BlockTextButton extends StatelessWidget {
   const BlockTextButton({
@@ -44,8 +45,8 @@ class BlockTextButton extends StatelessWidget {
           value!,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
+            fontSize: AppDimensions.fontSize,
+            fontWeight: AppDimensions.fontWeight,
             color: !useTextColorScheme ? color : AppColors.getColor(double.parse(value!))
           ),
         )

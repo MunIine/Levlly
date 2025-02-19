@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/extensions/num_extensions.dart';
 import 'package:levlly/screens/calculator/widgets/appbar/export.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/export.dart';
 
 class MarksAppbar extends StatefulWidget {
@@ -28,15 +29,15 @@ class _MarksAppbarState extends State<MarksAppbar> {
         BlockTextButton(
           value: marksCount.toString(), 
           onPressed: (){},
-          width: 90,
-          height: 65,
+          width: AppDimensions.appBarBlockWidth,
+          height: AppDimensions.appBarBlockHeight
         ),
-        CircularProgressWithText(value: grade, size: 80),
+        CircularProgressWithText(value: grade, size: AppDimensions.appBarCircularSize),
         MarkInputBlock(
           defaultGoalScore: widget.goalScore, 
           changeGoalScore: widget.changeGoalScore, 
-          height: 65, 
-          width: 90
+          width: AppDimensions.appBarBlockWidth,
+          height: AppDimensions.appBarBlockHeight
         )
       ]
     );

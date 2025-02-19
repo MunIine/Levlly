@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 
 class CircularProgressWithText extends StatelessWidget {
   const CircularProgressWithText({super.key, required this.value, required this.size});
@@ -21,7 +22,7 @@ class CircularProgressWithText extends StatelessWidget {
               value: value / 5,
               strokeWidth: 16,
               strokeCap: StrokeCap.round,
-              backgroundColor: const Color(0xFFF5F4F1),
+              backgroundColor: AppColors.blockBackgroundColor,
               valueColor: AlwaysStoppedAnimation<Color>(AppColors.getColor(value)),
             ),
           ),
@@ -29,9 +30,9 @@ class CircularProgressWithText extends StatelessWidget {
         Text(
           value.toString(),
           style: TextStyle(
-            fontSize: 23,
+            fontSize: AppDimensions.circularFontSize,
+            fontWeight: AppDimensions.circularFontWeight,
             color: AppColors.getColor(value),
-            fontWeight: FontWeight.w800,
           )
         ),
       ],

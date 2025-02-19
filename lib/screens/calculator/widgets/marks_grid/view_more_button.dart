@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 
 class ViewMoreButton extends StatelessWidget {
   const ViewMoreButton({
     super.key, 
     required this.onPressed,
     this.down = true,
-    this.size = 60, 
+    this.size = AppDimensions.moreButtonSize, 
   });
 
   final double size;
@@ -22,10 +23,10 @@ class ViewMoreButton extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(AppDimensions.moreButtonBorderRadius),
           border: Border.all(
             color: AppColors.placeholder,
-            width: 5
+            width: AppDimensions.moreButtonBorder
           )
         ),
         child: Center(
@@ -34,7 +35,7 @@ class ViewMoreButton extends StatelessWidget {
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               color: AppColors.placeholder,
-              size: 42,
+              size: AppDimensions.moreButtonIconSize,
             ),
           ),
         ),
