@@ -13,6 +13,7 @@ class _CalculatorState extends State<Calculator> {
   
   final List<String> marks = [];
   String goalScore = "3.5"; // Стандартный желаемый балл
+  int numberOfRequiredMarks = 0;
 
   void markAdd(String value){
     if(marks.length == 999) return; // Может быть какой-то алерт о превышении
@@ -27,6 +28,12 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
+  void updateNumberOfRequiredMarks(int value){
+    setState(() {
+      numberOfRequiredMarks = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +45,8 @@ class _CalculatorState extends State<Calculator> {
             MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore,),
             const SizedBox(height: 30),
             MarksPlaceholder(marks: marks, markAdd: markAdd),
+            const SizedBox(height: 20),
+            MarksCountSelect(updateNumberOfRequiredMarks: updateNumberOfRequiredMarks,)
           ],
         ),
       ),

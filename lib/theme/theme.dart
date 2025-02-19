@@ -9,7 +9,8 @@ final theme = ThemeData(
       backgroundColor: WidgetStateProperty.all(AppColors.blockBackgroundColor),
       shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
       elevation: const WidgetStatePropertyAll(6),
-      shadowColor: const WidgetStatePropertyAll(AppColors.shadowColor)
+      shadowColor: const WidgetStatePropertyAll(AppColors.shadowColor),
+      overlayColor: WidgetStateProperty.all(AppColors.splashEffectColor)
     )
   ),
   textSelectionTheme: const TextSelectionThemeData(

@@ -4,25 +4,27 @@ import 'package:levlly/theme/app_colors.dart';
 class BlockTextButton extends StatelessWidget {
   const BlockTextButton({
     super.key, 
-    required this.value,
+    this.value,
     required this.onPressed,
     this.useTextColorScheme = false,
     this.useBackgroundColorScheme = false,
     this.width, 
     this.height,
     this.elevation,
-    this.color, 
+    this.color = AppColors.alternativeTextColor, 
     this.backgroundColor, 
-  });
+    this.child, 
+  }) : assert(value != null || child != null, "Either value or child must be provided");
 
-  final String value;
+  final String? value;
   final VoidCallback? onPressed;
+  final Widget? child;
   final bool useTextColorScheme;
   final bool useBackgroundColorScheme;
   final double? width;
   final double? height;
   final double? elevation;
-  final Color? color;
+  final Color color;
   final Color? backgroundColor;
 
   @override
@@ -35,16 +37,16 @@ class BlockTextButton extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: !useBackgroundColorScheme ?
           WidgetStatePropertyAll(backgroundColor) :
-          WidgetStatePropertyAll(AppColors.getColor(double.parse(value))),
+          WidgetStatePropertyAll(AppColors.getColor(double.parse(value!))),
           elevation: WidgetStatePropertyAll(elevation)
         ),
-        child: Text(
-          value,
+        child: child ?? Text(
+          value!,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.w700,
-            color: !useTextColorScheme ? color : AppColors.getColor(double.parse(value))
+            color: !useTextColorScheme ? color : AppColors.getColor(double.parse(value!))
           ),
         )
       ),

@@ -17,6 +17,7 @@ class AppColors{
   static const Color alternativeTextColor = Color(0xFFA1A1A1);
   static const Color textColor = Colors.white;
   static const Color shadowColor = Color(0xCC000000);
+  static const Color splashEffectColor = Color(0xACCDCDCD);
 
   static Color getColor(num value) => marks[value.round()];
 }

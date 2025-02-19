@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/extensions/num_extensions.dart';
-import 'package:levlly/theme/app_colors.dart';
 import 'package:levlly/screens/calculator/widgets/appbar/export.dart';
 import 'package:levlly/widgets/export.dart';
 
@@ -31,7 +30,6 @@ class _MarksAppbarState extends State<MarksAppbar> {
           onPressed: (){},
           width: 90,
           height: 65,
-          color: AppColors.alternativeTextColor,
         ),
         CircularProgressWithText(value: grade, size: 80),
         MarkInputBlock(
