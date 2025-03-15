@@ -53,6 +53,8 @@ class _MarkInputBlockState extends State<MarkInputBlock> {
   @override
   Widget build(BuildContext context) {
     return ItemBlock(
+      verticalPadding: 0,
+      horizontalPadding: 0,
       child: SizedBox(
         width: widget.width,
         height: widget.height,

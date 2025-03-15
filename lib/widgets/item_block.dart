@@ -8,13 +8,17 @@ class ItemBlock extends StatelessWidget {
     required this.child, 
     this.elevation = AppDimensions.elevation, 
     this.borderRadius = AppDimensions.itemBlockBorderRadius, 
-    this.shadowColor = AppColors.shadowColor
+    this.shadowColor = AppColors.shadowColor,
+    this.horizontalPadding = AppDimensions.itemBlockHorizontalPadding,
+    this.verticalPadding = AppDimensions.itemBlockVerticalPadding
   });
 
   final Widget child;
   final double elevation;
   final double borderRadius;
   final Color shadowColor;
+  final double verticalPadding;
+  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,10 @@ class ItemBlock extends StatelessWidget {
       color: AppColors.blockBackgroundColor,
       elevation: elevation,
       borderRadius: BorderRadius.circular(borderRadius),
-      child: child,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: verticalPadding).copyWith(left: horizontalPadding).copyWith(right: horizontalPadding),
+        child: child,
+      ),
     );
   }
 }

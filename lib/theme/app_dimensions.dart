@@ -12,6 +12,8 @@ class AppDimensions{
 
   // Item block
   static const double itemBlockBorderRadius = 12;
+  static const double itemBlockVerticalPadding = 12;
+  static const double itemBlockHorizontalPadding = 15;
 
   // View more button
   static const double moreButtonSize = 60;
@@ -43,20 +45,23 @@ class AppDimensions{
   static const double appBarCircularSize = 80;
 
   // Marks grid
-  static const double placeholderPadding = 12;
   static const double gridItemSize = 53;
-  static const double gridItemPadding = 2;
-  static const double gridHorizontalItemPadding = 19;
-  static const double gridVerticalItemPadding = 15;
+  static double gridHorizontalItemPadding = 19;
+  static double gridVerticalItemPadding = 15;
 
   // Marks select
   static const double selectIconSize = 30;
   static const double selectItemSize = 53;
   static const double selectItemElevation = 3;
-  static const double selectVerticalPadding = 12;
-  static const double selectHorizontalPadding = 15;
 
   // Bottom bar
   static const double bottomMarksBarPadding = 12;
-  static const double bottomMarksBarSize = 60;
+  static const double bottomMarksBarSize = 56;
+
+  static void init(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
+    final rowWidth = width-bodyPadding*2-itemBlockHorizontalPadding*2;
+    gridHorizontalItemPadding = (rowWidth-gridItemSize*5)/4;
+  }
 }

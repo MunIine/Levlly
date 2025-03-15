@@ -34,12 +34,8 @@ class _DoubleGridViewState extends State<DoubleGridView> {
             Expanded(
               child: ListView.separated(
                 itemCount: itemsCount+freePlaces+1,
-                padding: const EdgeInsets.symmetric(horizontal: AppDimensions.gridItemPadding),
                 scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) {
-                  // Костыль для добавления separator к последнему элементу
-                  return SizedBox(width: index != itemsCount+freePlaces-1 ? horizontalItemsPadding : horizontalItemsPadding - AppDimensions.gridItemPadding);
-                },
+                separatorBuilder: (context, index) => SizedBox(width: horizontalItemsPadding),
                 itemBuilder: (context, index){
                   if (index == itemsCount+freePlaces){ // Отступ для последнего элемента
                     return Container();
@@ -66,7 +62,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
                 expandMode = !expandMode;
               });
             }),
-            const SizedBox(width: AppDimensions.gridItemPadding)
+            // const SizedBox(width: AppDimensions.gridItemPadding)
           ]
         ),
       );
@@ -77,7 +73,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
       height: itemsSize * 2 + verticalItemsPadding,
       child: GridView.builder(
         itemCount: itemsCount+freePlaces+1,
-        padding: const EdgeInsets.symmetric(horizontal: AppDimensions.gridItemPadding),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 5,
           crossAxisSpacing: horizontalItemsPadding,

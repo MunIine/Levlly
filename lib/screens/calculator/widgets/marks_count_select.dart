@@ -18,31 +18,26 @@ class _MarksCountSelectState extends State<MarksCountSelect> {
   @override
   Widget build(BuildContext context) {
     return ItemBlock(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppDimensions.selectVerticalPadding)
-        .copyWith(left: AppDimensions.selectHorizontalPadding)
-        .copyWith(right: AppDimensions.selectHorizontalPadding),
-        child: Row(
+      child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(5, (int index) {
             return BlockTextButton(
-              value: index != 4 ? (index+1).toString() : null,
-              backgroundColor: selected == index ? AppColors.selected : AppColors.blockItemsBackgroundColor,
-              height: AppDimensions.selectItemSize,
-              width: AppDimensions.selectItemSize,
-              elevation: AppDimensions.selectItemElevation,
-              onPressed: (){
-                selected = index;
-                widget.updateNumberOfRequiredMarks(selected);
-              },
-              child: index == 4 ? const Icon(
-                Icons.edit_rounded,
-                color: AppColors.alternativeTextColor,
-                size: AppDimensions.selectIconSize,
-              ) : null
-            );
-          }),
-        )
+            value: index != 4 ? (index+1).toString() : null,
+            backgroundColor: selected == index ? AppColors.selected : AppColors.blockItemsBackgroundColor,
+            height: AppDimensions.selectItemSize,
+            width: AppDimensions.selectItemSize,
+            elevation: AppDimensions.selectItemElevation,
+            onPressed: (){
+              selected = index;
+              widget.updateNumberOfRequiredMarks(selected);
+            },
+            child: index == 4 ? const Icon(
+              Icons.edit_rounded,
+              color: AppColors.alternativeTextColor,
+              size: AppDimensions.selectIconSize,
+            ) : null
+          );
+        }),
       )
     );
   }
