@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppDimensions{
+  bool initialized = false;
+
   // All font
   static const double fontSize = 30;
   static const FontWeight fontWeight = FontWeight.w700;
@@ -58,6 +60,9 @@ class AppDimensions{
   static const double bottomMarksBarSize = 56;
 
   static void init(BuildContext context) {
+    if (AppDimensions().initialized) return;
+    AppDimensions().initialized = true;
+    
     final double width = MediaQuery.of(context).size.width;
 
     final rowWidth = width-bodyPadding*2-itemBlockHorizontalPadding*2;

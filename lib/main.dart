@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:levlly/screens/calculator/view/calculator.dart';
-import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/theme/theme.dart';
 
 void main() {
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
       theme: theme,
       home: Builder(
         builder: (context) {
-          AppDimensions.init(context);
           return const Calculator();
         }
       )

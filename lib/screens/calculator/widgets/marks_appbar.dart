@@ -18,6 +18,7 @@ class MarksAppbar extends StatefulWidget {
 class _MarksAppbarState extends State<MarksAppbar> {
   @override
   Widget build(BuildContext context) {
+    AppDimensions.init(context);
     final int marksSum = widget.marks.fold(0, (sum, element) => sum + element);
     final int marksCount = widget.marks.length;
     final num grade = (marksSum/(marksCount != 0 ? marksCount : 1)).cutNumber(2);
