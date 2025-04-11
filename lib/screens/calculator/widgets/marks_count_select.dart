@@ -55,6 +55,16 @@ class _MarksCountSelectState extends State<MarksCountSelect> {
                           controller: controller,
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            hintText: "Введите число", // Добавлено текстовое поле подсказки
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.alternativeTextColor), // Изменение цвета при фокусе
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.selected), // Базовый цвет подчёркивания
+                            ),
+                            counterText: "", // Отключение отображения счётчика символов
+                          ),
                           maxLength: 2,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp("[0123456789]"))
