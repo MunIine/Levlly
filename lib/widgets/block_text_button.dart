@@ -13,8 +13,9 @@ class BlockTextButton extends StatelessWidget {
     this.height,
     this.elevation,
     this.color = AppColors.alternativeTextColor, 
-    this.backgroundColor, 
-    this.child, 
+    this.backgroundColor,
+    this.fontSize,
+    this.child,
   }) : assert(value != null || child != null, "Either value or child must be provided");
 
   final String? value;
@@ -25,6 +26,7 @@ class BlockTextButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double? elevation;
+  final double? fontSize;
   final Color color;
   final Color? backgroundColor;
 
@@ -45,7 +47,7 @@ class BlockTextButton extends StatelessWidget {
           value!,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: AppDimensions.fontSize,
+            fontSize: fontSize ?? AppDimensions.fontSize,
             fontWeight: AppDimensions.fontWeight,
             color: !useTextColorScheme ? color : AppColors.getColor(double.parse(value!))
           ),

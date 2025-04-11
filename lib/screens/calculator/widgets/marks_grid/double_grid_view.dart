@@ -62,7 +62,6 @@ class _DoubleGridViewState extends State<DoubleGridView> {
                 expandMode = !expandMode;
               });
             }),
-            // const SizedBox(width: AppDimensions.gridItemPadding)
           ]
         ),
       );

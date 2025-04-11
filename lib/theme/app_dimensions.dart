@@ -35,7 +35,6 @@ class AppDimensions{
 
 
   // Circular progress text
-  static const double circularFontSize = 23;
   static const FontWeight circularFontWeight = FontWeight.w800;
 
 

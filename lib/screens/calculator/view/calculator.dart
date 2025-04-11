@@ -41,11 +41,13 @@ class _CalculatorState extends State<Calculator> {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore,),
+            MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore),
             const SizedBox(height: 30),
             MarksPlaceholder(marks: marks, markAdd: markAdd),
             const SizedBox(height: 20),
-            MarksCountSelect(updateNumberOfRequiredMarks: updateNumberOfRequiredMarks,)
+            MarksCountSelect(updateNumberOfRequiredMarks: updateNumberOfRequiredMarks),
+            const SizedBox(height: 20),
+            SolvesList(marks: marks, numberOfRequiredMarks: numberOfRequiredMarks, goalScore: goalScore),
           ],
         ),
       ),

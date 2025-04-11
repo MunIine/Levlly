@@ -10,7 +10,8 @@ class ItemBlock extends StatelessWidget {
     this.borderRadius = AppDimensions.itemBlockBorderRadius, 
     this.shadowColor = AppColors.shadowColor,
     this.horizontalPadding = AppDimensions.itemBlockHorizontalPadding,
-    this.verticalPadding = AppDimensions.itemBlockVerticalPadding
+    this.verticalPadding = AppDimensions.itemBlockVerticalPadding,
+    this.color,
   });
 
   final Widget child;
@@ -19,12 +20,13 @@ class ItemBlock extends StatelessWidget {
   final Color shadowColor;
   final double verticalPadding;
   final double horizontalPadding;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       shadowColor: shadowColor,
-      color: AppColors.blockBackgroundColor,
+      color: color ?? AppColors.blockBackgroundColor,
       elevation: elevation,
       borderRadius: BorderRadius.circular(borderRadius),
       child: Padding(
