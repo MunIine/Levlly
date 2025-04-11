@@ -6,9 +6,10 @@ import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/block_text_button.dart';
 
 class DoubleGridView extends StatefulWidget {
-  const DoubleGridView({super.key, required this.marks});
+  const DoubleGridView({super.key, required this.marks, required this.markRemoveAt});
 
   final List<int> marks;
+  final ValueChanged<int> markRemoveAt;
 
   @override
   State<DoubleGridView> createState() => _DoubleGridViewState();
@@ -45,7 +46,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
                   }
                   return BlockTextButton(
                     value: widget.marks[index].toString(), 
-                    onPressed: (){},
+                    onPressed: () => widget.markRemoveAt(index),
                     useBackgroundColorScheme: true, 
                     color: AppColors.textColor,
                     elevation: 0,
@@ -82,7 +83,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
           if (index < itemsCount){
             return BlockTextButton(
               value: widget.marks[index].toString(), 
-              onPressed: (){},
+              onPressed: () => widget.markRemoveAt(index),
               useBackgroundColorScheme: true, 
               color: AppColors.textColor,
               elevation: 0,

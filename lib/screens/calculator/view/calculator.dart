@@ -22,6 +22,12 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
+  void markRemoveAt(int index){
+    setState(() {
+      marks.removeAt(index);
+    });
+  }
+
   void changeGoalScore(String value){
     setState(() {
       goalScore = value;
@@ -46,7 +52,7 @@ class _CalculatorState extends State<Calculator> {
             const SizedBox(height: 50),
             MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore),
             const SizedBox(height: 30),
-            MarksPlaceholder(marks: marks, markAdd: markAdd),
+            MarksPlaceholder(marks: marks, markAdd: markAdd, markRemoveAt: markRemoveAt),
             const SizedBox(height: 20),
             MarksCountSelect(updateNumberOfRequiredMarks: updateNumberOfRequiredMarks),
             const SizedBox(height: 20),
