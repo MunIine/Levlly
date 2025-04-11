@@ -7,7 +7,7 @@ import 'package:levlly/widgets/export.dart';
 class MarksAppbar extends StatefulWidget {
   const MarksAppbar({super.key, required this.marks, required this.changeGoalScore, required this.goalScore});
 
-  final List<String> marks;
+  final List<int> marks;
   final ValueChanged<String> changeGoalScore;
   final String goalScore;
 
@@ -18,7 +18,7 @@ class MarksAppbar extends StatefulWidget {
 class _MarksAppbarState extends State<MarksAppbar> {
   @override
   Widget build(BuildContext context) {
-    final int marksSum = widget.marks.fold(0, (sum, element) => sum + int.parse(element));
+    final int marksSum = widget.marks.fold(0, (sum, element) => sum + element);
     final int marksCount = widget.marks.length;
     final num grade = (marksSum/(marksCount != 0 ? marksCount : 1)).cutNumber(2);
 

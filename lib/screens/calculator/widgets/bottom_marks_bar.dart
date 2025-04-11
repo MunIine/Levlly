@@ -6,7 +6,7 @@ import 'package:levlly/widgets/export.dart';
 class BottomMarksBar extends StatelessWidget {
   const BottomMarksBar({super.key, required this.markAdd});
 
-  final ValueChanged<String> markAdd;
+  final ValueChanged<int> markAdd;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,13 @@ class BottomMarksBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(5, (int index){
-            final String value = (5-index).toString();
-            return Draggable(
+            final int value = (5-index);
+            return Draggable<int>(
               data: value,
               feedback: Opacity(
                 opacity: 0.75,
                 child: BlockTextButton(
-                  value: value, 
+                  value: value.toString(), 
                   onPressed: (){}, 
                   useBackgroundColorScheme: true, 
                   color: AppColors.textColor,
@@ -30,7 +30,7 @@ class BottomMarksBar extends StatelessWidget {
                 ),
               ),
               child: BlockTextButton(
-                value: value, 
+                value: value.toString(), 
                 onPressed: () => markAdd(value), 
                 useBackgroundColorScheme: true, 
                 color: AppColors.textColor,

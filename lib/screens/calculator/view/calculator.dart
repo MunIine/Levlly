@@ -10,11 +10,11 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  final List<String> marks = [];
+  final List<int> marks = [];
   String goalScore = "3.5"; // Стандартный желаемый балл
   int numberOfRequiredMarks = 0;
 
-  void markAdd(String value){
+  void markAdd(int value){
     if(marks.length == 999) return; // Может быть какой-то алерт о превышении
     setState(() {
       marks.add(value);

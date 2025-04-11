@@ -5,7 +5,7 @@ import 'package:levlly/widgets/export.dart';
 class SolvesList extends StatefulWidget {
   const SolvesList({super.key, required this.marks, required this.numberOfRequiredMarks, required this.goalScore});
 
-  final List<String> marks;
+  final List<int> marks;
   final int numberOfRequiredMarks;
   final String goalScore;
 

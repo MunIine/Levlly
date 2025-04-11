@@ -5,8 +5,8 @@ import 'package:levlly/widgets/export.dart';
 class MarksPlaceholder extends StatefulWidget {
   const MarksPlaceholder({super.key, required this.marks, required this.markAdd});
 
-  final List<String> marks;
-  final ValueChanged<String> markAdd;
+  final List<int> marks;
+  final ValueChanged<int> markAdd;
 
   @override
   State<MarksPlaceholder> createState() => _MarksPlaceholderState();
@@ -16,7 +16,7 @@ class _MarksPlaceholderState extends State<MarksPlaceholder> {
   @override
   Widget build(BuildContext context) {
     return ItemBlock(
-      child: DragTarget<String>(
+      child: DragTarget<int>(
         builder: (context, candidateData, rejectedData) {
           return DoubleGridView(marks: widget.marks);
         },
