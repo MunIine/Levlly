@@ -17,12 +17,14 @@ class DoubleGridView extends StatefulWidget {
 
 class _DoubleGridViewState extends State<DoubleGridView> {
   final double itemsSize = AppDimensions.gridItemSize;
-  final double horizontalItemsPadding = AppDimensions.gridHorizontalItemPadding;
   final double verticalItemsPadding = AppDimensions.gridVerticalItemPadding; // Только для dual mode
   bool expandMode = false;
 
   @override
   Widget build(BuildContext context) {
+    AppDimensions.init(context); // Инициализация размеров
+
+    final double horizontalItemsPadding = AppDimensions.gridHorizontalItemPadding;
     final int itemsCount = widget.marks.length;
     final freePlaces = getFreePlaces(itemsCount, expandMode);
 
