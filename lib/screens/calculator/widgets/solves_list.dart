@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:levlly/models/solves_list_model.dart';
+import 'package:levlly/repository/calculator_repository.dart';
 import 'package:levlly/theme/app_colors.dart';
+import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/export.dart';
 
 class SolvesList extends StatefulWidget {
-  const SolvesList({super.key, required this.marks, required this.numberOfRequiredMarks, required this.goalScore});
+  const SolvesList({super.key, required this.calculatorRepository});
 
-  final List<int> marks;
-  final int numberOfRequiredMarks;
-  final String goalScore;
+  final CalculatorRepository calculatorRepository;
 
   @override
   State<SolvesList> createState() => _SolvesListState();
@@ -21,20 +22,33 @@ class _SolvesListState extends State<SolvesList> {
   @override
   Widget build(BuildContext context) {
     final double rowHeight = marksSize+2*secondListPadding;
+    final SolvesListModel solvesList = widget.calculatorRepository.getMarks();
 
     return ItemBlock(
       horizontalPadding: 0,
       verticalPadding: 0,
       child: SizedBox(
         height: rowHeight*2 + 20 + 24,
-        child: ListView.separated(
-          itemCount: 10,
+        child: solvesList.isEmpty ? 
+        const Center(
+          child: Text(
+            "Бог в помощь\n    ¯\\_(ツ)_/¯",
+            style: TextStyle(
+              color: AppColors.alternativeTextColor,
+              fontSize: AppDimensions.fontSize,
+              fontWeight: AppDimensions.fontWeight,
+            ),
+          ),
+        )
+
+        : ListView.separated(
+          itemCount: solvesList.length,
           padding: const EdgeInsets.symmetric(vertical: 12).copyWith(left: 20).copyWith(right: 15),
           separatorBuilder: (context, index) => const SizedBox(height: 20),
           itemBuilder: (context, index) {
             return Row(
               children: [
-                const CircularProgressWithText(value: 3.85, size: 50, strokeWidth: 10,),
+                CircularProgressWithText(value: solvesList.scores[index], size: 50, strokeWidth: 10,),
                 const SizedBox(width: 20),
                 Expanded(
                   child: ItemBlock(
@@ -45,13 +59,13 @@ class _SolvesListState extends State<SolvesList> {
                       width: double.infinity,
                       height: rowHeight,
                       child: ListView.separated(
-                        itemCount: 4,
+                        itemCount: solvesList.marksCombinations[index].length,
                         padding: EdgeInsets.symmetric(vertical: secondListPadding, horizontal: secondListPadding),
                         scrollDirection: Axis.horizontal,
-                        separatorBuilder: (context, index) => SizedBox(width: secondListPadding),
-                        itemBuilder: (context, index) {
+                        separatorBuilder: (context, _) => SizedBox(width: secondListPadding),
+                        itemBuilder: (context, indexSecond) {
                           return BlockTextButton(
-                            value: "5", 
+                            value: solvesList.marksCombinations[index][indexSecond].toString(), 
                             onPressed: (){},
                             useBackgroundColorScheme: true, 
                             color: AppColors.textColor,

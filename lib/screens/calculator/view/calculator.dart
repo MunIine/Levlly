@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:levlly/repository/calculator_repository.dart';
 import 'package:levlly/screens/calculator/widgets/export.dart';
 import 'package:levlly/theme/app_dimensions.dart';
 
@@ -12,7 +13,7 @@ class Calculator extends StatefulWidget {
 class _CalculatorState extends State<Calculator> {
   final List<int> marks = [];
   String goalScore = "3.5"; // Стандартный желаемый балл
-  int numberOfRequiredMarks = 0;
+  int numberOfRequiredMarks = 1;
 
   void markAdd(int value){
     if(marks.length == 999) return; // Может быть какой-то алерт о превышении
@@ -35,6 +36,8 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   Widget build(BuildContext context) {
+    CalculatorRepository calculatorRepository = CalculatorRepository(marks: marks, goalScore: goalScore, numberOfRequiredMarks: numberOfRequiredMarks);
+    
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppDimensions.bodyPadding),
@@ -47,7 +50,7 @@ class _CalculatorState extends State<Calculator> {
             const SizedBox(height: 20),
             MarksCountSelect(updateNumberOfRequiredMarks: updateNumberOfRequiredMarks),
             const SizedBox(height: 20),
-            SolvesList(marks: marks, numberOfRequiredMarks: numberOfRequiredMarks, goalScore: goalScore),
+            SolvesList(calculatorRepository: calculatorRepository),
           ],
         ),
       ),

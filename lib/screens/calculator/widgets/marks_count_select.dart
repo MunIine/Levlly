@@ -29,7 +29,7 @@ class _MarksCountSelectState extends State<MarksCountSelect> {
             elevation: AppDimensions.selectItemElevation,
             onPressed: (){
               selected = index;
-              widget.updateNumberOfRequiredMarks(selected);
+              widget.updateNumberOfRequiredMarks(selected+1);
             },
             child: index == 4 ? const Icon(
               Icons.edit_rounded,
