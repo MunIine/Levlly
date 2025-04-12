@@ -56,7 +56,6 @@ class _MarksCountSelectState extends State<MarksCountSelect> {
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
-                            hintText: "Введите число", // Добавлено текстовое поле подсказки
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: AppColors.alternativeTextColor), // Изменение цвета при фокусе
                             ),
@@ -119,6 +118,9 @@ class _MarksCountSelectState extends State<MarksCountSelect> {
     if(value.isNotEmpty){
       selected = int.parse(value)-1;
       widget.updateNumberOfRequiredMarks(selected+1);
+    }
+    else{
+      controller.text = (selected+1).toString();
     }
     Navigator.of(context).pop();
   }

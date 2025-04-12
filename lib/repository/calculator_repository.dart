@@ -12,10 +12,13 @@ class CalculatorRepository {
   final int numberOfRequiredMarks;
   final String goalScore;
 
-  SolvesListModel getMarks(){ // List<List<String, List<int>>>
-    final int minMarkToUp = double.parse(goalScore).cutNumber(0).round(); // Подумать над переработкой, основа 3.0
+  SolvesListModel getMarks(){
+    final int minMarkToUp = double.parse(goalScore).cutNumber(0).round();
     final List values = List.generate(5-minMarkToUp, (int index) => minMarkToUp+index+1);
     final int marksSum = marks.isNotEmpty ? marks.reduce((a, b) => a + b) : 0;
+
+    // Добавить эту оценку в список значений, если цель - целый балл
+    if (double.parse(goalScore).cutNumber(0) == double.parse(goalScore)) values.add(double.parse(goalScore).toInt());
 
     SolvesListModel solvesList = SolvesListModel([], []);
     List<int> currentCombination = List.filled(numberOfRequiredMarks, values[0]);
