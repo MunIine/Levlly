@@ -3,8 +3,9 @@ import 'package:levlly/screens/calculator/widgets/marks_grid/export.dart';
 import 'package:levlly/widgets/export.dart';
 
 class MarksPlaceholder extends StatefulWidget {
-  const MarksPlaceholder({super.key, required this.marks, required this.markAdd, required this.markRemoveAt});
+  const MarksPlaceholder({super.key, required this.marks, required this.markAdd, required this.markRemoveAt, required this.scrollController});
 
+  final ScrollController scrollController;
   final List<int> marks;
   final ValueChanged<int> markAdd;
   final ValueChanged<int> markRemoveAt;
@@ -19,7 +20,7 @@ class _MarksPlaceholderState extends State<MarksPlaceholder> {
     return ItemBlock(
       child: DragTarget<int>(
         builder: (context, candidateData, rejectedData) {
-          return DoubleGridView(marks: widget.marks, markRemoveAt: widget.markRemoveAt);
+          return DoubleGridView(marks: widget.marks, markRemoveAt: widget.markRemoveAt, scrollController: widget.scrollController,);
         },
         onAcceptWithDetails:(details) => widget.markAdd(details.data),
       )

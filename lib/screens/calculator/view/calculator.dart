@@ -11,6 +11,8 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+  final ScrollController scrollController = ScrollController();
+
   final List<int> marks = [];
   String goalScore = "3.5"; // Стандартный желаемый балл
   int numberOfRequiredMarks = 1;
@@ -19,6 +21,16 @@ class _CalculatorState extends State<Calculator> {
     if(marks.length == 999) return; // Может быть какой-то алерт о превышении
     setState(() {
       marks.add(value);
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollController.hasClients){
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
     });
   }
 
@@ -52,7 +64,7 @@ class _CalculatorState extends State<Calculator> {
             const SizedBox(height: 50),
             MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore),
             const SizedBox(height: 30),
-            MarksPlaceholder(marks: marks, markAdd: markAdd, markRemoveAt: markRemoveAt),
+            MarksPlaceholder(marks: marks, markAdd: markAdd, markRemoveAt: markRemoveAt, scrollController: scrollController,),
             const SizedBox(height: 20),
             MarksCountSelect(updateNumberOfRequiredMarks: updateNumberOfRequiredMarks),
             const SizedBox(height: 20),

@@ -6,8 +6,9 @@ import 'package:levlly/theme/app_dimensions.dart';
 import 'package:levlly/widgets/block_text_button.dart';
 
 class DoubleGridView extends StatefulWidget {
-  const DoubleGridView({super.key, required this.marks, required this.markRemoveAt});
+  const DoubleGridView({super.key, required this.marks, required this.markRemoveAt, required this.scrollController});
 
+  final ScrollController scrollController;
   final List<int> marks;
   final ValueChanged<int> markRemoveAt;
 
@@ -36,6 +37,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
           children: [
             Expanded(
               child: ListView.separated(
+                controller: widget.scrollController,
                 itemCount: itemsCount+freePlaces+1,
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) => SizedBox(width: horizontalItemsPadding),
@@ -74,6 +76,7 @@ class _DoubleGridViewState extends State<DoubleGridView> {
     return SizedBox(
       height: itemsSize * 2 + verticalItemsPadding,
       child: GridView.builder(
+        controller: widget.scrollController,
         itemCount: itemsCount+freePlaces+1,
         padding: const EdgeInsets.symmetric(horizontal: 0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
