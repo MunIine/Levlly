@@ -66,7 +66,7 @@ class _SolvesListState extends State<SolvesList> {
                         itemBuilder: (context, indexSecond) {
                           return BlockTextButton(
                             value: solvesList.marksCombinations[index][indexSecond].toString(), 
-                            onPressed: (){},
+                            onPressed: null,
                             useBackgroundColorScheme: true, 
                             color: AppColors.textColor,
                             elevation: 0,
