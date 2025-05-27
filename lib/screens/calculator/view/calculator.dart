@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:levlly/repository/calculator_repository.dart';
 import 'package:levlly/screens/calculator/widgets/export.dart';
 import 'package:levlly/theme/app_dimensions.dart';
@@ -18,7 +19,13 @@ class _CalculatorState extends State<Calculator> {
   int numberOfRequiredMarks = 1;
 
   void markAdd(int value){
-    if(marks.length == 999) return; // Может быть какой-то алерт о превышении
+    if(marks.length == 999){ // Ограничение на 999 оценок
+      Fluttertoast.cancel();
+      Fluttertoast.showToast(
+        msg: "Журнал закончился",
+      );
+      return;
+    }
     setState(() {
       marks.add(value);
     });
