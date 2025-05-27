@@ -47,6 +47,12 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
+  void clearMarks(){
+    setState(() {
+      marks.clear();
+    });
+  }
+
   void changeGoalScore(String value){
     setState(() {
       goalScore = value;
@@ -69,7 +75,7 @@ class _CalculatorState extends State<Calculator> {
         child: Column(
           children: [
             const SizedBox(height: 50),
-            MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore),
+            MarksAppbar(marks: marks, goalScore: goalScore, changeGoalScore: changeGoalScore, clearMarks: clearMarks,),
             const SizedBox(height: 30),
             MarksPlaceholder(marks: marks, markAdd: markAdd, markRemoveAt: markRemoveAt, scrollController: scrollController,),
             const SizedBox(height: 20),
